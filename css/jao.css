@@ -1,5 +1,5 @@
         .cor {
-            height: 200px;
+            height: 250px;
             background-color: red;
             /* For browsers that do not support gradients */
             background-image: linear-gradient(to bottom right, rgb(27, 122, 211), rgb(32, 87, 189));
