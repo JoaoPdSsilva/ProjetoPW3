@@ -4,7 +4,7 @@
     $hostname = "fdb28.awardspace.net";
     $dbname = "3547270_ptojetinpw3db";
     $username = "3547270_ptojetinpw3db";
-    $password = "u%?w[z7}4ZRtXsrv";
+    $password = "aYBV82J!._mJ2Ck";
 
     try {
         $pdo = new PDO('mysql:host='.$hostname.';dbname='.$dbname, $username, $password);

@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('.btn-save').click(function(e) {
         e.preventDefault()
 
-        let dados = $('#form-tipo').serialize()
+        let dados = $('#form-eixo').serialize()
 
         dados += `&operacao=${$('.btn-save').attr('data-operation')}`
 
@@ -12,7 +12,7 @@ $(document).ready(function() {
             dataType: 'json',
             assync: true,
             data: dados,
-            url: 'src/tipo-usuario/model/save-tipo.php',
+            url: 'src/eixo/model/save-eixo.php',
             success: function(dados) {
                 Swal.fire({
                     title: 'Library',
@@ -21,11 +21,10 @@ $(document).ready(function() {
                     confirmButtonText: 'OK'
                 })
 
-                $('#modal-tipo').modal('hide')
-                $('#table-tipo').DataTable().ajax.reload()
+                $('#modal-eixo').modal('hide')
+                $('#eixo').DataTable().ajax.reload()
             }
         })
-
     })
 
 })

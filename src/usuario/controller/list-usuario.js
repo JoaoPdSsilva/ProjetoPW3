@@ -1,25 +1,25 @@
 $(document).ready(function() {
 
-   $('#table-tipo').DataTable({
+    $('#table-usuario').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax": {
-            "url": "src/tipo-usuario/model/list-tipo.php",
+            "url": "src/usuario/model/list-usuario.php",
             "type": "POST"
         },
         "language": {
             "url": "libs/dataTables/pt_br.json"
         },
         "columns": [{
-                "data": 'IDTIPO_USUARIO',
+                "data": 'IDUSUARIO',
                 "className": "text-center"
             },
             {
-                "data": 'DESCRICAO',
+                "data": 'NOME',
                 "className": "text-center"
             },
             {
-                "data": 'IDTIPO_USUARIO',
+                "data": 'IDUSUARIO',
                 "orderable": false,
                 "searchable": false,
                 "className": "text-center",

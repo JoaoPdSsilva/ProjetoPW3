@@ -1,28 +1,27 @@
 $(document).ready(function() {
-
-   $('#table-tipo').DataTable({
+    $('#eixo').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax": {
-            "url": "src/tipo-usuario/model/list-tipo.php",
+            "url": "src/eixo/model/list-eixo.php",
             "type": "POST"
         },
         "language": {
             "url": "libs/dataTables/pt_br.json"
         },
         "columns": [{
-                "data": 'IDTIPO_USUARIO',
-                "className": "text-center"
+                "data": 'IDEIXO',
+                "className": 'text-center'
             },
             {
-                "data": 'DESCRICAO',
-                "className": "text-center"
+                "data": 'NOME',
+                "className": 'text-center'
             },
             {
-                "data": 'IDTIPO_USUARIO',
+                "data": 'IDEIXO',
                 "orderable": false,
                 "searchable": false,
-                "className": "text-center",
+                "className": 'text-center',
                 "render": function(data, type, row, meta) {
                     return `
                     <button id="${data}" class="btn btn-info btn-sm btn-view"><i class="fas fa-eye"></i></button>
