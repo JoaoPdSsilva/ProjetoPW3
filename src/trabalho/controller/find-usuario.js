@@ -5,8 +5,11 @@ function selectAuthor(){
         let idElement = $(this).attr("data-id")
         let nameElement = $(this).attr("data-name")
 
-            $('#result').append(`<input type="text" name="" id="" class="form-control" value="${nameElement}" disabled><input type="hidden" name="USUARIO_IDUSUARIO" id="USUARIO_IDUSUARIO" value=${idElement} />`)
-
+            $('#result').append(`div class="alert alert-primary">${nameElement}</div>
+            <input type="hidden" name="USUARIO_IDUSUARIO" value="${idElement}" />
+            
+            `)
+            
             $('#' + idElement).hide()
         
     })
@@ -32,10 +35,10 @@ $(document).ready(function() {
                 type: 'POST',
                 assync: true,
                 data: NOME,
-                url: 'src/tipo-usuario/model/find-usuario.php',
+                url: 'src/usuario/model/find-usuario.php',
                 success: function(dados) {
                     for (const dado of dados) {
-                        $('#autores').append(`<div class="alert alert-primary" data-name="${dado.NOME}" data-id="${dado.IDUSUARIO}" role="alert">${dado.NOME}</div>`)
+                        $('#autores').append(`<div class="alert alert-success" data-name="${dado.NOME}" data-id="${dado.IDUSUARIO}" role="alert">${dado.NOME}</div>`)
                     }
                     selectAuthor();
                 }

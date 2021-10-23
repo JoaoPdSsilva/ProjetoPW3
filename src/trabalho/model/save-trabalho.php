@@ -2,7 +2,6 @@
     /******
      * Upload de imagens
      ******/
-
     //  echo $_FILES[ 'archive' ][ 'name' ];
 
     // verifica se foi enviado um arquivo
@@ -39,12 +38,13 @@
                 // Scripts de persistência no banco de dados .....
                 // Obter a nossa conexão com o banco de dados
                 include('../../conexao/conn.php');
+                
 
                 // Obter os dados enviados do formulário via $_REQUEST
                 $requestData = $_REQUEST;
 
                 // Verificação de campo obrigatórios do formulário
-                if(empty($requestData['TITULO'])){
+                if(empty($dados['TITULO'])){
                     // Caso a variável venha vazia eu gero um retorno de erro do mesmo
                     $dados = array(
                         "tipo" => 'error',
@@ -59,7 +59,7 @@
                     if($operacao == 'insert'){
                         // Prepara o comando INSERT para ser executado
                         try{
-                            $stmt = $pdo->prepare('INSERT INTO TRABALHO (TITULO, ANO, NROPAGINAS, RESUMO, ORIENTADOR, COORIENTADOR, ARQUIVO) VALUES (:a, :b, :c, :d, :e, :f, :g)');
+                            $stmt = $pdo->prepare('INSERT INTO TRABALHO (TITULO, ANO, NROPAGINAS, RESUMO, ORIENTADOR, COORIENTADOR, ARQUIVO) VALUES (:a, :b, :c, :d, :e, :f, :g');
                             $stmt->execute(array(
                                 ':a' => utf8_decode($requestData['TITULO']),
                                 ':b' => $requestData['ANO'],
@@ -108,7 +108,7 @@
                                 ':d' => utf8_decode($requestData['RESUMO']),
                                 ':e' => utf8_decode($requestData['ORIENTADOR']),
                                 ':f' => utf8_decode($requestData['COORIENTADOR']),
-                                ':g' => $requestData['ARQUIVO']
+                                ':g' => $novoNome
                             ));
                             $retorno = array(
                                 "tipo" => 'success',

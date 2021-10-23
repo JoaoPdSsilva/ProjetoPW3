@@ -1,30 +1,18 @@
 $(document).ready(function() {
-
-    $('.btn-save').click(function(e) {
+    $('.btn-new').click(function(e) {
         e.preventDefault()
 
-        let dados = $('#form-eixo').serialize()
+        $('.modal-title').empty()
+        $('.modal-body').empty()
 
-        dados += `&operacao=${$('.btn-save').attr('data-operation')}`
+        $('.modal-title').append('Adicionar novo eixo tecnológico')
 
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            assync: true,
-            data: dados,
-            url: 'src/eixo/model/save-eixo.php',
-            success: function(dados) {
-                Swal.fire({
-                    title: 'Library',
-                    text: dados.mensagem,
-                    icon: dados.tipo,
-                    confirmButtonText: 'OK'
-                })
+        $('.modal-body').load('src/eixo/view/form-eixo.html')
 
-                $('#modal-eixo').modal('hide')
-                $('#eixo').DataTable().ajax.reload()
-            }
-        })
+        $('.btn-save').show()
+
+        $('.btn-save').attr('data-operation', 'insert')
+
+        $('#modal-eixo').modal('show')
     })
-
 })
