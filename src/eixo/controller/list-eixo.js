@@ -7,7 +7,7 @@ $(document).ready(function() {
             "type": "POST"
         },
         "language": {
-            "url": "libs/dataTables/pt_br.json"
+            "url": "libs/DataTables/pt_br.json"
         },
         "columns": [{
                 "data": 'IDEIXO',
