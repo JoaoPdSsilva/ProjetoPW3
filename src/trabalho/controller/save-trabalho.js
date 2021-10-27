@@ -16,13 +16,13 @@ $(document).ready(function() {
             cache: false,
             processData: false,
             success: function(dados) {
-                Swal.fire({
-                    title: 'Library',
-                    text: dados.mensagem,
-                    icon: dados.tipo,
-                    confirmButtonText: 'OK'
+                // alert(dados.mensagem)
+                Swal.fire({                
+                title: 'Library',                
+                text: dados.mensagem,
+                icon: dados.tipo,                
+                confirmButtonText: 'OK'                
                 })
-
                 $('#modal-trabalho').modal('hide')
                     // $('#table-trabalho').DataTable().ajax.reload()
             }

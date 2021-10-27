@@ -30,7 +30,7 @@ $(document).ready(function() {
                 } else {
                     Swal.fire({ // Inicialização do SweetAlert
                         title: 'Library', // Título da janela SweetAler
-                        text: dado.mensagem, // Mensagem retornada do microserviço
+                        text: dado.mensagem, // mensagem retornada do microserviço
                         type: dado.tipo, // Tipo de retorno [success, info ou error]
                         confirmButtonText: 'OK'
                     })

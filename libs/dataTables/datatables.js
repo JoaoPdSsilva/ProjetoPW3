@@ -6505,17 +6505,17 @@
 	 * Log an error message
 	 *  @param {object} settings dataTables settings object
 	 *  @param {int} level log error messages, or display them to the user
-	 *  @param {string} msg error message
+	 *  @param {string} mensagem error message
 	 *  @param {int} tn Technical note id to get more information about the error.
 	 *  @memberof DataTable#oApi
 	 */
-	function _fnLog( settings, level, msg, tn )
+	function _fnLog( settings, level, mensagem, tn )
 	{
-		msg = 'DataTables warning: '+
-			(settings ? 'table id='+settings.sTableId+' - ' : '')+msg;
+		mensagem = 'DataTables warning: '+
+			(settings ? 'table id='+settings.sTableId+' - ' : '')+mensagem;
 	
 		if ( tn ) {
-			msg += '. For more information about this error, please see '+
+			mensagem += '. For more information about this error, please see '+
 			'http://datatables.net/tn/'+tn;
 		}
 	
@@ -6525,21 +6525,21 @@
 			var type = ext.sErrMode || ext.errMode;
 	
 			if ( settings ) {
-				_fnCallbackFire( settings, null, 'error', [ settings, tn, msg ] );
+				_fnCallbackFire( settings, null, 'error', [ settings, tn, mensagem ] );
 			}
 	
 			if ( type == 'alert' ) {
-				alert( msg );
+				alert( mensagem );
 			}
 			else if ( type == 'throw' ) {
-				throw new Error(msg);
+				throw new Error(mensagem);
 			}
 			else if ( typeof type == 'function' ) {
-				type( settings, tn, msg );
+				type( settings, tn, mensagem );
 			}
 		}
 		else if ( window.console && console.log ) {
-			console.log( msg );
+			console.log( mensagem );
 		}
 	}
 	

@@ -44,9 +44,9 @@
                 $requestData = $_REQUEST;
 
                 // Verificação de campo obrigatórios do formulário
-                if(empty($dados['TITULO'])){
+                if(empty($requestData['TITULO'])){
                     // Caso a variável venha vazia eu gero um retorno de erro do mesmo
-                    $dados = array(
+                    $retorno = array(
                         "tipo" => 'error',
                         "mensagem" => 'Existe(m) campo(s) obrigatório(s) não preenchido(s).'
                     );
@@ -67,7 +67,7 @@
                                 ':d' => utf8_decode($requestData['RESUMO']),
                                 ':e' => utf8_decode($requestData['ORIENTADOR']),
                                 ':f' => utf8_decode($requestData['COORIENTADOR']),
-                                ':g' => $requestData['ARQUIVO']
+                                ':g' => $novoNome
                             ));
 
                             $sql = $pdo->query("SELECT * FROM TRABALHO ORDER BY IDTRABALHO DESC LIMIT 1");
@@ -76,13 +76,13 @@
                                 $IDTRABALHO = $resultado ['IDTRABALHO'];
                             }
 
-                            $indice = count(array_filter($requestData['AUTOR']));
+                            $indice = count(array_filter($requestData['USUARIO_IDUSUARIO']));
 
                             for($i=0; $i<$indice ;$i++){
-                                $stmt = $pdo -> prepare('INSERT INTO AUTOR (TRABALHO_IDTRABALHO, USUARIO_IDUSUARIO) VALUES (:a, :b)');
+                                $stmt = $pdo -> prepare('INSERT INTO AUTOR (TRABALHO_IDTRABALHO, USUARIO_IDUSUARIO) VALUES (:h, :i)');
                                 $stmt -> execute(array(
-                                    ':a' => $IDTRABALHO,
-                                    ':b' => $requestData['AUTOR'][$i]
+                                    ':h' => $IDTRABALHO,
+                                    ':i' => $requestData['USUARIO_IDUSUARIO'][$i]
                                 ));
                             }
 
@@ -108,7 +108,7 @@
                                 ':d' => utf8_decode($requestData['RESUMO']),
                                 ':e' => utf8_decode($requestData['ORIENTADOR']),
                                 ':f' => utf8_decode($requestData['COORIENTADOR']),
-                                ':g' => $novoNome
+                                ':g' => $requestData['ARQUIVO']
                             ));
                             $retorno = array(
                                 "tipo" => 'success',
@@ -126,13 +126,13 @@
                 // $retorno = array ('mensagem' => 'Arquivo salvo com sucesso em : ' . $destino);
             }
             else
-                $retorno = array ('mensagem' => 'Erro ao salvar o arquivo. Aparentemente você não tem permissão de escrita.');
+                $retorno = array ("mensagem" => 'Erro ao salvar o arquivo. Aparentemente você não tem permissão de escrita.');
         }
         else
-            $retorno = array ('mensagem' => 'Você poderá enviar apenas arquivos "*.PDF"');
+            $retorno = array ("mensagem" => 'Você poderá enviar apenas arquivos "*.PDF"');
     }
     else
-        $retorno = array ('mensagem' => 'Você não enviou nenhum arquivo!');
+        $retorno = array ("mensagem" => 'Você não enviou nenhum arquivo!');
 
 
     echo json_encode($retorno);
